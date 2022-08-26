@@ -26,6 +26,7 @@ df$Time<-as.factor(df$Time)
 m1<-lmer(ORFwc~Tx*Time+(1|StuID), data=df)
 anova(m1)
 lsmeans(m1, list(pairwise ~ Time|Tx), adjust = "tukey") 
+library(effsize)
 
 
 p<-ggplot(data = df, aes(x = Time, y = ORFwc, group = StuID))
