@@ -1,8 +1,14 @@
 ###Ola Ozernov-Palchik oozernov@mit.edu
 
-setwd("~/Dropbox (MIT)/BU_TEACH/ECRI")
-df <- haven::read_sas("ms_s1tier2impact.sas7bdat")
+setwd("/Users/olaozernov-palchik/Dropbox (MIT)/GitHub/BU_TEACH/data")
 
+#import intervention data
+#df <- haven::read_sas("ms_s1tier2impact.sas7bdat")
+df <- read.csv("ecri2022.csv")
+
+#import moderators
+md<-haven::read_sas("ms_s1s2tier2impact.sas7bdat")
+md<-read.csv("ms_s1s2tier2impact.csv")
 Packages <- c("dplyr", "reshape", "magrittr", "tidyr", "ggplot2", "ggpubr",
               "lme4", "lmerTest","emmeans", "sjstats", "plotrix","dabestr","lmerTest", "grid", "plotrix", "readxl", "lmPerm","gridExtra", "grid","ggpubr",'sjmisc','relaimpo',"pbkrtest","effectsize","lsmeans")
 
