@@ -1,22 +1,23 @@
 ###Ola Ozernov-Palchik oozernov@mit.edu
 
 setwd("/Users/olaozernov-palchik/Dropbox (MIT)/GitHub/BU_TEACH/data")
-
-#import intervention data
-#df <- haven::read_sas("ms_s1tier2impact.sas7bdat")
-df <- read.csv("ecri2022.csv")
-
-#import moderators
-md<-haven::read_sas("ms_s1s2tier2impact.sas7bdat")
-md<-read.csv("ms_s1s2tier2impact.csv")
 Packages <- c("dplyr", "reshape", "magrittr", "tidyr", "ggplot2", "ggpubr",
               "lme4", "lmerTest","emmeans", "sjstats", "plotrix","dabestr","lmerTest", "grid", "plotrix", "readxl", "lmPerm","gridExtra", "grid","ggpubr",'sjmisc','relaimpo',"pbkrtest","effectsize","lsmeans")
 
 lapply(Packages, library, character.only = TRUE)
 
-#Sample by group and posttest completion
-table(df$Cohort,df$Tx)
 
+table(df$Cohort,df$Tx)
+#import intervention data
+#df <- haven::read_sas("ms_s1tier2impact.sas7bdat")
+df <- read.csv("ecri2022.csv")
+
+#import moderators
+md_2<-haven::read_spss("Ms_S1S2Tier2Impact2.sav")
+md<-read.csv("ms_s1s2tier2impact.csv")
+
+
+#Sample by group and posttest completion
 #check missin data
 sum(complete.cases(df$ORFwc)) #2275
 sum(!complete.cases(df$ORFwc)) #945
