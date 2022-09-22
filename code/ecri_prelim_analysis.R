@@ -13,8 +13,7 @@ table(df$Cohort,df$Tx)
 df <- read.csv("ecri2022.csv")
 
 #import moderators
-md_2<-haven::read_spss("Ms_S1S2Tier2Impact2.sav")
-md<-read.csv("ms_s1s2tier2impact.csv")
+df_complt<-read.csv("ms_s1s2tier2impact.csv")
 
 
 #Sample by group and posttest completion
