@@ -10,8 +10,10 @@ library(pointblank)
 library(tidyverse)
 library(blastula)
 library(palmerpenguins)
+library(gclus) #this is for visualizing correlations
 
-setwd("~/Dropbox (MIT)/BU_TEACH/ECRI")
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 df <- haven::read_sas("ms_s1tier2impact.sas7bdat")
 
 Packages <- c("dplyr", "reshape", "magrittr", "tidyr", "ggplot2", "ggpubr",
@@ -279,7 +281,25 @@ filename = "test.html")
 ```
 
 
+```{r}
 
+df_small<-na.omit(df2%>%dplyr::select(NWFcls,NWFwrc,ORFwc,SAwrS,SAsrS,SAtoS))
+
+# Correlation in absolute terms
+corr <- abs(cor(df_small)) 
+colors <- dmat.color(corr)
+order <- order.single(corr)
+
+cpairs(df_small,                    # Data frame of variables
+       order,                   # Order of the variables
+       panel.colors = colors,   # Matrix of panel colors
+       border.color = "grey70", # Borders color
+       gap = 0.45,              # Distance between subplots
+       main = "Ordered variables colored by correlation", # Main title
+       show.points = TRUE,      # If FALSE, removes all the points
+       pch = 21,                # pch symbol
+       bg = rainbow(2)[df$Tx])#color by group
+```
 
 
 
