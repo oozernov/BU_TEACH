@@ -9,6 +9,10 @@ from presidio_anonymizer.entities import EngineResult
 
 from presidio_analyzer.nlp_engine import NlpEngineProvider
 
+import pandas as pd
+
+from presidio_analyzer.predefined_recognizers import DateRecognizer
+
 
 class CSVAnalyzer(BatchAnalyzerEngine):
 
@@ -115,17 +119,32 @@ if __name__ == "__main__":
         supported_languages=["en"]
     )
 
+    # add specific recognizers
+    # analyzer_engine.registry.add_recognizer(DateRecognizer)
+
     analyzer = CSVAnalyzer(analyzer_engine=analyzer_engine)
 
     print('Analyzing...')
     analyzer_results = analyzer.analyze_csv(csv_path,
                                             language="en", keys_to_skip=skip_keys)
     
+    result = []
     for col in analyzer_results:
         if any(col.recognizer_results):
             # not empty
-            pii_result = [idx for idx, res in enumerate(col.recognizer_results) if res]
-            print('Column Name: {}, Indexes: {}'.format(col.key, pii_result))
+            row_ids = []
+            content = []
+            data_type = []
+            for idx, res in enumerate(col.recognizer_results):
+                if res:
+                    row_ids.append(idx)
+                    data_type.append([a.entity_type for a in res])
+                    content.append([col.value[idx][a.start:a.end] for a in res])
+            result.append({'col_name': col.key, 'row_index': row_ids, 'content': content, 'type': data_type})
         else:
             pass
+    # print(result)
+    df = pd.DataFrame.from_records(result)
+    print(df)     # output detection result
+
     print('Done')

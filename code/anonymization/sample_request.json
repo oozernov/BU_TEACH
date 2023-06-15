@@ -1,0 +1,23 @@
+[
+    {
+        "key": "name",
+        "type": "NAME",
+        "mode": "RECODE"
+    },
+    {
+        "key": "city",
+        "type": "NAME",
+        "mode": "REDACT"
+    },  
+    {
+        "key": "birthday",
+        "type": "DATE",
+        "mode": "RECODE",
+        "format": "%m/%d/%Y"
+    }, 
+    {
+        "key": "age",
+        "type": "AGE",
+        "mode": "RECODE"
+    }
+]
