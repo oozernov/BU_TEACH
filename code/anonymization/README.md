@@ -50,7 +50,7 @@ we get the anonymized dataset, where we hashed `name`, redacted `city`, added ra
 To perform NER on dataset using NLP model, run
 
 ```
-python csv_check.py --csv_path ./sample_2.csv
+python ner_check.py --csv_path ./sample_2.csv
 ```
 
 to analyze the CSV file and detect the locations of the inserted PII. Running the above command should give the following output:
