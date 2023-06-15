@@ -47,7 +47,7 @@ we get the anonymized dataset, where we hashed `name`, redacted `city`, added ra
 
 ## NLP NER Detection
 
-To perform NER on dataset using LLM, run
+To perform NER on dataset using NLP model, run
 
 ```
 python csv_check.py --csv_path ./sample_2.csv
