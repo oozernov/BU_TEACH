@@ -16,13 +16,13 @@ Currently the code checks for the following substrings, we can also specify cust
 
 ## Input
 
-### CSV file
+### csv_path
 
-A standard csv file with header as first row. 
+Path to standard csv file with header as first row. 
 
-### Custom HIPPA List [Optional]
+### custom_hippa_list [Optional]
 
-A text file with one word each line. e.g.
+Path to text file with one word each line. e.g.
 
 ```
 date

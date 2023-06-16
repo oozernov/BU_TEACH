@@ -7,13 +7,13 @@ python anonymize_csv.py --csv_path ./sample_2.csv --request_path ./sample_reques
 
 ## Inputs
 
-### CSV File
+### csv_path
 
-Standard CSV file with header as first row.
+Path to standard CSV file with header as first row.
 
-### Request
+### request_path
 
-User provides requests on what column to anonymize and how. Currently takes `.json` file in the format:
+Path to user provided requests on what column to anonymize and how. Currently takes `.json` file in the format:
 
 ```
 [

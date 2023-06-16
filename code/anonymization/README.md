@@ -45,7 +45,7 @@ we get the anonymized dataset, where we hashed `name`, redacted `city`, added ra
 ```
 
 
-## NLP NER Detection
+## NLP NER
 
 To perform NER on dataset using NLP model, run
 
